@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/title"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:text="Thêm sách"
+        android:textSize="30dp"
+        android:textColor="#f00"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_below="@+id/title"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:hint="Tên sách"
+        android:textColor="#f00"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <Spinner
+        android:id="@+id/txtType"
+        android:layout_below="@+id/txtName"
+        android:padding="10dp"
+        android:textSize="30dp"
+        android:textColor="#f00"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+    
+    <Button
+        android:id="@+id/addBook"
+        android:layout_marginLeft="60dp"
+        android:text="Thêm"
+        android:layout_below="@+id/txtType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </Button>
+
+    <Button
+        android:id="@+id/canncel"
+        android:layout_marginLeft="200dp"
+        android:text="Hủy"
+        android:layout_below="@+id/txtType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </Button>
+    
+</RelativeLayout>

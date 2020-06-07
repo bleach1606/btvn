@@ -1,6 +1,7 @@
 package com.example.loginsqlite;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -19,7 +20,7 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String create_students_table = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT)", TABLE_NAME, KEY_ID, KEY_USERNAME, KEY_PASSWORD);
+        String create_students_table = String.format("CREATE TABLE IF NOT EXISTS %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT)", TABLE_NAME, KEY_ID, KEY_USERNAME, KEY_PASSWORD);
         db.execSQL(create_students_table);
     }
 
@@ -30,5 +31,13 @@ public class DatabaseHandler extends SQLiteOpenHelper{
         onCreate(db);
     }
 
+    public void QueryData(String sql) {
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql);
+    }
 
+    public Cursor GetData(String sql) {
+        SQLiteDatabase database = getReadableDatabase();
+        return database.rawQuery(sql, null);
+    }
 }
