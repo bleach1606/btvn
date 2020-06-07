@@ -56,10 +56,9 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 findname = editText1.getText().toString();
-                if (type.getSelectedItem().toString() != "ALL") {
+                findtype = "";
+                if (type.getSelectedItem().toString().trim() != "Name") {
                     findtype = type.getSelectedItem().toString();
-                } else {
-                    findtype = "";
                 }
                 setData();
             }
@@ -69,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void setData() {
-        String sql = String.format("SELECT id, name, type FROM book where name like '%"+findname+"%' or type like '%"+findtype+"%' ");
+        String sql = String.format("SELECT id, name, type FROM book where name like '%s' or type like '%s' ", "%"+findname+"%", "%"+findtype+"%");
         list.clear();
         Toast.makeText(this, sql, Toast.LENGTH_LONG).show();
         Cursor cursor = database.GetData(sql);
